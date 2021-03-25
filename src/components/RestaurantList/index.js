@@ -5,9 +5,21 @@ import {
     FlatList,
     TouchableOpacity,
 } from "react-native";
+import ResultsDetail from "./ResultsDetail";
 import { withNavigation } from "react-navigation";
 
 import styles from './styles';
+
+const renderRestaurantList = ({ item }, navigation) => {
+    return (
+        <TouchableOpacity
+            onPress={() =>
+                navigation.navigate("ResultsShow", { id: item.id })
+            }>
+            <ResultsDetail restaurant={item} />
+        </TouchableOpacity>
+    )
+}
 
 const RestaurantList = ({ title, restaurants, navigation }) => {
     return (
@@ -18,7 +30,7 @@ const RestaurantList = ({ title, restaurants, navigation }) => {
                 showsHorizontalScrollIndicator={false}
                 data={restaurants}
                 keyExtractor={(restaurant) => restaurant.id}
-                renderItem={}
+                renderItem={(item) => renderRestaurantList(item, navigation)}
             />
         </View>
     );
