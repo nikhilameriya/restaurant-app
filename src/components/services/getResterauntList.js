@@ -23,7 +23,7 @@ export default () => {
         } catch (err) {
             console.log(err);
             // setErrorMessage("Something went wrong");
-            // Ideally there should be a connectionChange listner then fetch from sqlite db
+            // Ideally there should be a connectionChange listner which queries last updated data from sqlite db
             setResults(getRestaurantList());
             setBusyStatus(false);
         }

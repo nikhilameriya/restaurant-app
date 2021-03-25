@@ -26,9 +26,10 @@ const HomeScreen = () => {
         onTermSubmit={() => searchApi(term)}
       />
       {errorMessage ? <Text>{errorMessage}</Text> : null}
-      {isBusy && <ActivityIndicator />}
       
-      {/* Loader generally been managed though navigator level through redux state */}
+      {/* Loader should be managed through redux state */}
+      {isBusy && <ActivityIndicator />}
+
       <ScrollView
         refreshControl={
           <RefreshControl
