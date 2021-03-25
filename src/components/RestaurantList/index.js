@@ -23,7 +23,7 @@ const renderRestaurantList = ({ item }, navigation) => {
 
 const RestaurantList = ({ title, restaurants, navigation }) => {
     return (
-        <View style={styles.container}>
+        <View style={styles.listContainer}>
             <Text style={styles.titleStyle}>{title}</Text>
             <FlatList
                 horizontal

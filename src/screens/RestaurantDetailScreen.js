@@ -20,34 +20,54 @@ const RestaurantDetailScreen = ({ navigation }) => {
     return null;
   }
   const { name, price, photos, rating, review_count } = result;
-  debugger;
   return (
     <View>
-      <View>
-        <Text>{name}</Text>
-        <Text>
-          {price}
-        </Text>
+      <View style={styles.detailsLayout}>
+        <Text style={styles.name}>{name}</Text>
         <Text style={styles.subtitle}>
-          {rating} Stars, {review_count} Reviews
-      </Text>
+          {`${rating} Stars, ${review_count} Reviews`}
+        </Text>
       </View>
-      <FlatList
-        data={photos}
-        keyExtractor={(photo) => photo}
-        renderItem={(item) => {
-          return <Image style={styles.image} source={{ uri: item.item }} />;
-        }}
-      />
+      <View style={styles.galleryLayout}>
+        <FlatList
+          data={photos}
+          keyExtractor={(photo) => photo}
+          renderItem={(item) => {
+            return <Image style={styles.image} source={{ uri: item.item }} />;
+          }}
+        />
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  detailsLayout: {
+    marginLeft: 20,
+  },
+  galleryLayout: {
+    margin: 15
+  },
+  titleStyle: {
+    fontSize: 22,
+    fontWeight: "bold",
+    marginLeft: 15,
+    marginBottom: 5,
+  },
+  subtitle: {
+    fontSize: 14,
+    // fontWeight: "regular",
+    tintColor: "gray",
+  },
+  name: {
+    marginTop: 10,
+    fontWeight: "bold",
+    fontSize: 18,
+  },
   image: {
     justifyContent: "center",
     height: 200,
-    width: 300,
+    width: "100%",
   },
 });
 
