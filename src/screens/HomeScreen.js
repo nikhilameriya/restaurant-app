@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { RefreshControl, ActivityIndicator, Text, ScrollView } from "react-native";
 
 import { SearchBar } from "../components/SearchBar/index";
-import getResterauntList from "../components/services/getResterauntList";
+import getResterauntList from "../services/getResterauntList";
 import RestaurantList from "../components/RestaurantList/index";
 
 const HomeScreen = (props) => {

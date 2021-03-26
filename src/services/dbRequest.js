@@ -1,4 +1,4 @@
-import { database } from '../../components/database'
+import { database } from '../database'
 
 // All these stuffs can be put through contexts but less bandwidth gonna limit me
 const refreshRestarauntList = () => {

@@ -13,7 +13,7 @@ const renderRestaurantList = ({ item }, navigation) => {
     return (
         <TouchableOpacity
             onPress={() =>
-                navigation.navigate("RestarauntDetails", { id: item.id })
+                navigation.navigate("RestaurantDetails", { id: item.id })
             }>
             <ResultsDetail restaurant={item} />
         </TouchableOpacity>

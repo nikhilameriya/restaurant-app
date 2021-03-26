@@ -3,7 +3,7 @@ import axiosRequest from './axiosRequest'
 import { getRestaurantList } from './dbRequest'
 
 // Context to get db methods defined in RestaurantListContext
-import { RestaurantListContext } from '../../context/RestaurantListContext';
+import { RestaurantListContext } from '../context/RestaurantListContext';
 
 // All the request calls should be through saga's(If we're using Redux-Saga)
 export default () => {

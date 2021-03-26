@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, FlatList, Image } from "react-native";
 import config from "../config";
 
+import styles from './styles';
+
 const RestaurantDetailScreen = ({ navigation, route }) => {
   const [result, setResult] = useState(null);
   const { id } = route.params;
@@ -40,35 +42,5 @@ const RestaurantDetailScreen = ({ navigation, route }) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  detailsLayout: {
-    marginLeft: 20,
-  },
-  galleryLayout: {
-    margin: 15
-  },
-  titleStyle: {
-    fontSize: 22,
-    fontWeight: "bold",
-    marginLeft: 15,
-    marginBottom: 5,
-  },
-  subtitle: {
-    fontSize: 14,
-    // fontWeight: "regular",
-    tintColor: "gray",
-  },
-  name: {
-    marginTop: 10,
-    fontWeight: "bold",
-    fontSize: 18,
-  },
-  image: {
-    justifyContent: "center",
-    height: 200,
-    width: "100%",
-  },
-});
 
 export default RestaurantDetailScreen;

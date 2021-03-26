@@ -1,5 +1,5 @@
 import React, { useEffect, createContext, useState } from 'react';
-import { database } from '../components/database'
+import { database } from '../database'
 
 export const RestaurantListContext = createContext({});
 

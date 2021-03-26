@@ -19,7 +19,7 @@ export default function App(props) {
         <NavigationContainer >
           <Stack.Navigator>
             <Stack.Screen name="Search" component={HomeScreen} />
-            <Stack.Screen name="RestarauntDetails" component={RestaurantDetailScreen} />
+            <Stack.Screen name="RestaurantDetails" component={RestaurantDetailScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </RestaurantListContextProvider>

@@ -1,7 +1,9 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
+
 import { SearchInput } from "../../shared/components/Input/SearchInput";
+import styles from './styles';
 
 export const SearchBar = ({ term, onTermChange, onTermSubmit }) => {
   return (
@@ -15,20 +17,3 @@ export const SearchBar = ({ term, onTermChange, onTermSubmit }) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  backgroundStyle: {
-    backgroundColor: "grey",
-    height: 40,
-    borderRadius: 10,
-    marginHorizontal: 2,
-    marginTop: 10,
-    flexDirection: "row",
-    marginBottom: 10,
-  },
-  iconStyle: {
-    fontSize: 25,
-    alignSelf: "center",
-    marginHorizontal: 10,
-  },
-});

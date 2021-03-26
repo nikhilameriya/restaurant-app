@@ -1,4 +1,4 @@
-import config from "../../config";
+import config from "../config";
 
 //This is just a dummy way of calling axios get requests, it should be keep more contrasted
 
