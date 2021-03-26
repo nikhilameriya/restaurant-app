@@ -19,11 +19,6 @@ export default StyleSheet.create({
     marginLeft: 15,
     marginBottom: 5,
   },
-  subtitle: {
-    fontSize: 14,
-    // fontWeight: "regular",
-    tintColor: "gray",
-  },
   name: {
     fontWeight: "bold",
     fontSize: 14,

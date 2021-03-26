@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, FlatList, Image } from "react-native";
+import { RatingComponent } from '../shared/components/RatingComponent';
 import config from "../config";
 
 import styles from './styles';
@@ -21,14 +22,12 @@ const RestaurantDetailScreen = ({ navigation, route }) => {
   if (!result) {
     return null;
   }
-  const { name, price, photos, rating, review_count } = result;
+  const { name, photos } = result;
   return (
     <View>
       <View style={styles.detailsLayout}>
         <Text style={styles.name}>{name}</Text>
-        <Text style={styles.subtitle}>
-          {`${rating} Stars, ${review_count} Reviews`}
-        </Text>
+        <RatingComponent restaurant={result} />
       </View>
       <View style={styles.galleryLayout}>
         <FlatList
