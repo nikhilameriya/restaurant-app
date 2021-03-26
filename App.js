@@ -1,30 +1,35 @@
-import { createAppContainer } from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
+
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import React from 'react';
+import { Platform, StatusBar, StyleSheet, View } from 'react-native';
+
 import HomeScreen from "./src/screens/HomeScreen";
 import RestaurantDetailScreen from "./src/screens/RestaurantDetailScreen";
 
+import { RestaurantListContextProvider } from './src/context/RestaurantListContext'
 
-//We can do context api setup here for using our sqlite db setup
-// A basic db setup can be done before splash screen load, for offline app we perform sqlite db queries in async calls
-// SplashScreen.preventAutoHideAsync();
+const Stack = createStackNavigator();
 
-// const isLoadingComplete = useCachedResources();
-// const isDBLoadingComplete = useDatabase();
-
-// if (isLoadingComplete && isDBLoadingComplete) {
-//   SplashScreen.hideAsync();
-
-  const navigator = createStackNavigator(
-    {
-      Search: HomeScreen,
-      ResultsShow: RestaurantDetailScreen,
-    },
-    {
-      initialRouteName: "Search",
-      defaultNavigationOptions: {
-        title: "Restaurant List",
-      },
-    }
+export default function App(props) {
+  return (
+    <View style={styles.container}>
+      {Platform.OS === 'ios' && <StatusBar barStyle="dark-content" />}
+      <RestaurantListContextProvider>
+        <NavigationContainer >
+          <Stack.Navigator>
+            <Stack.Screen name="Search" component={HomeScreen} />
+            <Stack.Screen name="RestarauntDetails" component={RestaurantDetailScreen} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </RestaurantListContextProvider>
+    </View>
   );
+}
 
-  export default createAppContainer(navigator);
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+  }
+});

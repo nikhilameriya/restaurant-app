@@ -1,20 +1,25 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import axiosRequest from './axiosRequest'
-import { addNewList, getRestaurantList, refreshList } from './dbRequest'
+import { getRestaurantList } from './dbRequest'
+
+// Context to get db methods defined in RestaurantListContext
+import { RestaurantListContext } from '../../context/RestaurantListContext';
 
 // All the request calls should be through saga's(If we're using Redux-Saga)
 export default () => {
     const [results, setResults] = useState([]);
-    // loading state
-    const [isBusy, setBusyStatus] = useState(true);
+    const [isBusy, setBusyStatus] = useState(true);  // loading state
     const [errorMessage, setErrorMessage] = useState("");
+
+    const restaurantListContext = useContext(RestaurantListContext)
+    const { restaurantList, addNewList, refreshRestarauntList } = restaurantListContext;
 
     const searchApi = async (searchTerm) => {
         try {
             const response = await axiosRequest("search", searchTerm);
             setResults(response.data.businesses);
             if (getRestaurantList()) {
-                refreshList(response.data.businesses)
+                refreshRestarauntList(response.data.businesses)
             }
             else {
                 addNewList(response.data.businesses);
@@ -23,8 +28,7 @@ export default () => {
         } catch (err) {
             console.log(err);
             // setErrorMessage("Something went wrong");
-            // Ideally there should be a connectionChange listner which queries last updated data from sqlite db
-            setResults(getRestaurantList());
+            setResults(getRestaurantList()); // Ideally there should be a connectionChange listner which queries last updated data from sqlite db
             setBusyStatus(false);
         }
     };

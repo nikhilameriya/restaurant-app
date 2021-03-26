@@ -5,11 +5,10 @@ import { SearchBar } from "../components/SearchBar/index";
 import getResterauntList from "../components/services/getResterauntList";
 import RestaurantList from "../components/RestaurantList/index";
 
-const HomeScreen = () => {
+const HomeScreen = (props) => {
   const [term, setTerm] = useState("");
   const [refreshing, setRefreshing] = useState(false);
   const [searchApi, results, isBusy, errorMessage] = getResterauntList();
-
   const onRefresh = async () => {
     setRefreshing(true);
     await searchApi("");
@@ -26,7 +25,7 @@ const HomeScreen = () => {
         onTermSubmit={() => searchApi(term)}
       />
       {errorMessage ? <Text>{errorMessage}</Text> : null}
-      
+
       {/* Loader should be managed through redux state */}
       {isBusy && <ActivityIndicator />}
 
@@ -40,14 +39,17 @@ const HomeScreen = () => {
         <RestaurantList
           restaurants={filterResultByPrice("$")}
           title="Cost Effective"
+          {...props}
         />
         <RestaurantList
           restaurants={filterResultByPrice("$$")}
           title="Bit Pricier"
+          {...props}
         />
         <RestaurantList
           restaurants={filterResultByPrice("$$$")}
           title="Big Spender"
+          {...props}
         />
       </ScrollView>
     </>

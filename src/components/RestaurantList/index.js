@@ -6,7 +6,6 @@ import {
     TouchableOpacity,
 } from "react-native";
 import ResultsDetail from "./ResultsDetail";
-import { withNavigation } from "react-navigation";
 
 import styles from './styles';
 
@@ -14,7 +13,7 @@ const renderRestaurantList = ({ item }, navigation) => {
     return (
         <TouchableOpacity
             onPress={() =>
-                navigation.navigate("ResultsShow", { id: item.id })
+                navigation.navigate("RestarauntDetails", { id: item.id })
             }>
             <ResultsDetail restaurant={item} />
         </TouchableOpacity>
@@ -36,4 +35,4 @@ const RestaurantList = ({ title, restaurants, navigation }) => {
     );
 };
 
-export default withNavigation(RestaurantList);
+export default RestaurantList;

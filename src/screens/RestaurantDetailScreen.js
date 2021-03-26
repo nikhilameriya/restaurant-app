@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, FlatList, Image } from "react-native";
 import config from "../config";
 
-const RestaurantDetailScreen = ({ navigation }) => {
+const RestaurantDetailScreen = ({ navigation, route }) => {
   const [result, setResult] = useState(null);
-  const id = navigation.getParam("id");
+  const { id } = route.params;
 
   const getResult = async (id) => {
     //get the details of restaurant based on id
